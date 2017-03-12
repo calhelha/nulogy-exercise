@@ -1,8 +1,8 @@
 Flat_fee = 0.5
-Person_fee = .0012
-Pharma_fee = .0075
-Food_fee = .13
-Electro_fee = .02
+Person_fee = 0.0012
+Pharma_fee = 0.0075
+Food_fee = 0.13
+Electro_fee = 0.02
 No_fee = 0
 
 Pharma_type = 'pharma'
@@ -34,6 +34,8 @@ def calc_shipping_fee(original_price, number_persons, material_type)
   final_price = price + (original_price * other_markups)
 
 end
+
+
 
 
 
