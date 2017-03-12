@@ -1,40 +1,28 @@
-Flat_fee = 0.05
-Person_fee = 0.012
-Pharma_fee = 0.075
-Food_fee = 0.13
-Electro_fee = 0.02
-No_fee = 0
+def default_flat_fee
+  0.05
+end
 
-Pharma_type = 'drugs'
-Food_type = 'food'
-Electro_type = 'electro'
+def default_person_fee
+  0.012
+end
 
-material_type_fee = 0.00
-final_price = 0.00
-number_persons_fee = 0
-other_markups = 0.00
-
-
+def default_shipping_fees
+  {
+    'drugs' => 0.075,
+    'food' => 0.13,
+    'electronics' => 0.02
+  }
+end
 
 def calc_shipping_fee(original_price, number_persons, material_type)
-  case material_type
-  when Pharma_type
-    material_type_fee = Pharma_fee
-  when Food_type
-    material_type_fee = Food_fee
-  when Electro_type
-    material_type_fee = Electro_fee
-  else
-    material_type_fee = No_fee
-  end
+  material_type_fee = default_shipping_fees.fetch(material_type, 0)
 
-  number_persons_fee = number_persons * Person_fee
+  number_persons_fee = number_persons * default_person_fee
 
   other_markups = material_type_fee + number_persons_fee
 
-  price = (original_price + (original_price * Flat_fee))
+  price = (original_price + (original_price * default_flat_fee))
   final_price = (price + (price * other_markups))
-
 end
 
 
