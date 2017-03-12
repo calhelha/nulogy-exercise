@@ -17,6 +17,21 @@ other_markups = 0.00
 
 
 def calc_shipping_fee(original_price, number_persons, material_type)
+  case material_type
+  when Pharma_type
+    material_type_fee = Pharma_fee
+  when Food_type
+    material_type_fee = Food_fee
+  when Electro_type
+    material_type_fee = Electro_fee
+  end
+
+  number_persons_fee = number_persons * Person_fee
+
+  other_markups = material_type + number_persons_fee
+
+  price = (original_price + (original_price * Flat_fee))
+  final_price = price + (original_price * other_markups)
 
 end
 
